@@ -1,0 +1,466 @@
+/* ========================================================
+   WEBSITE CSS - LIGHT MAGENTA THEME 🌸🍷
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg-color: #fffafb;
+    /* Nền trang: Trắng pha xíu hồng */
+    --card-bg: #ffffff;
+    /* Nền thẻ: Trắng tinh */
+    --border-color: #ffdae0;
+    /* Viền: Hồng nhạt pastel */
+    --text-color: #2b2d42;
+    /* Chữ chính: Xám đen (Dễ đọc) */
+    --text-muted: #717c8e;
+    /* Chữ phụ: Xám nhạt */
+    --primary-color: #d81159;
+    /* 🍷 Hồng Mận Đậm (Magenta) */
+    --primary-hover: #9b0032;
+    /* Hồng mận tối (khi hover) */
+
+    --shadow-sm: 0 4px 10px rgba(216, 17, 89, 0.05);
+    --shadow-md: 0 8px 25px rgba(216, 17, 89, 0.12);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- 1. NAVBAR (Ép thanh điều hướng tối thành sáng) --- */
+.navbar-dark {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    z-index: 1060 !important;
+}
+
+/* Ép chữ trên Navbar thành màu tối */
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+    color: var(--text-color) !important;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Ép màu Toggler và Icon sang màu tối để hiện trên nền trắng */
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.navbar-dark .bi-chevron-down {
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Xóa bỏ caret mặc định của Bootstrap */
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #ff4d6d, var(--primary-color));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(216, 17, 89, 0.3);
+}
+
+.logo-icon i {
+    color: white !important;
+}
+
+/* --- 2. HERO SECTION --- */
+.hero {
+    background: linear-gradient(135deg, #ffe4e8 0%, #fff0f3 100%);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content h1 {
+    background: linear-gradient(135deg, var(--primary-color), #ff4d6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Section Title */
+.section-title {
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 800;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), #ff4d6d);
+    border-radius: 4px;
+}
+
+/* --- 3. MOVIE CARDS --- */
+.movie-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(216, 17, 89, 0.3);
+}
+
+.movie-poster {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.movie-card:hover .movie-poster img {
+    transform: scale(1.08);
+}
+
+.movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(216, 17, 89, 0.9), rgba(0, 0, 0, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+
+.movie-info {
+    padding: 1.25rem;
+}
+
+.movie-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- 4. SHOWTIME BOX (Suất chiếu) --- */
+.showtime-box {
+    background-color: #fffafb;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.showtime-box:hover {
+    border-color: var(--primary-color) !important;
+    background-color: #ffe4e8;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(216, 17, 89, 0.15);
+}
+
+.showtime-box .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* --- 5. CARDS & FORMS --- */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color);
+    background-color: transparent;
+    font-weight: 700;
+}
+
+.form-control,
+.form-select {
+    background-color: #ffffff;
+    border: 2px solid #e2e8f0;
+    color: var(--text-color);
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #ffffff;
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 4px rgba(216, 17, 89, 0.15);
+}
+
+.form-floating>label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* --- 6. BUTTONS --- */
+.btn {
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    border: none;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(216, 17, 89, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(216, 17, 89, 0.45);
+    color: white;
+}
+
+.btn-outline-light {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color) !important;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--primary-color);
+    color: white !important;
+    border-color: var(--primary-color);
+}
+
+/* --- 7. BẢNG (TABLE) & HUY HIỆU --- */
+.table {
+    color: var(--text-color);
+}
+
+.table-dark {
+    background-color: transparent !important;
+    color: var(--text-color) !important;
+}
+
+.table th,
+.table td {
+    border-color: var(--border-color) !important;
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 8px;
+    font-weight: 800;
+}
+
+.badge.bg-danger {
+    background-color: #ffe4e8 !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--border-color);
+}
+
+.badge.bg-success {
+    background-color: #d1fae5 !important;
+    color: #059669 !important;
+    border: 1px solid #a7f3d0;
+}
+
+/* --- 8. ÉP MENU DROPDOWN SANG SÁNG --- */
+.dropdown-menu-dark {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md);
+    border-radius: 12px;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: var(--text-color) !important;
+    font-weight: 600;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #ffe4e8 !important;
+    color: var(--primary-color) !important;
+}
+
+.dropdown-menu-dark .dropdown-divider {
+    border-color: var(--border-color) !important;
+}
+
+/* --- 9. TRANG ĐĂNG NHẬP / ĐĂNG KÝ (AUTH) --- */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffe4e8, #ffb3c6);
+    /* Nền mây hồng */
+}
+
+.auth-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(216, 17, 89, 0.15);
+}
+
+.auth-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff4d6d, var(--primary-color));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    box-shadow: 0 8px 20px rgba(216, 17, 89, 0.4);
+}
+
+.auth-logo i {
+    font-size: 2.8rem;
+    color: white;
+}
+
+.auth-title {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* --- 10. FOOTER --- */
+.footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 1rem;
+    margin-top: auto !important;
+    color: var(--text-muted);
+}
+
+.footer a {
+    transition: color 0.3s;
+    color: var(--text-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .movie-poster {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .movie-poster {
+        height: 320px;
+    }
+
+    .auth-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 20px;
+        margin: 15px;
+    }
+
+    .search-form-mobile {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+
+    .filter-mobile-wrapper {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .movie-poster {
+        height: 280px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}

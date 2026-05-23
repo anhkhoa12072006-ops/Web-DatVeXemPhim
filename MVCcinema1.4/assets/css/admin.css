@@ -1,0 +1,869 @@
+/* ========================================================
+   ADMIN PANEL CSS - DEEP PINK / MAGENTA THEME ???
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --sidebar-width: 280px;
+    --header-height: 76px;
+
+    /* ?? B?ng m�u H?ng �?m (Magenta/Deep Pink) */
+    --primary-color: #d81159;
+    /* H?ng m?n d?m */
+    --primary-hover: #9b0032;
+    /* �? m?n (T?i hon khi hover) */
+    --light-bg: #ffe4e8;
+    /* N?n trang: Tr?ng pha h?ng d�u */
+    --card-bg: #ffffff;
+    /* N?n th?: Tr?ng tinh */
+    --border-color: #ffb3c6;
+    /* Vi?n: H?ng c�nh sen */
+
+    /* M�u ch? hi?n th? tr�n n?n s�ng */
+    --text-main: #2b2d42;
+    /* X�m den */
+    --text-muted: #717c8e;
+    /* X�m d?m hon b?n cu d? d? d?c */
+
+    /* �? b�ng (B�ng h?ng d?m) & Bo g�c */
+    --shadow-sm: 0 4px 10px rgba(216, 17, 89, 0.12);
+    --shadow-md: 0 8px 20px rgba(216, 17, 89, 0.18);
+    --shadow-lg: 0 15px 35px rgba(216, 17, 89, 0.28);
+    --radius-md: 14px;
+    --radius-lg: 24px;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--text-main);
+}
+p {
+    color: var(--text-muted);
+}
+
+/* --- 1. SIDEBAR & LOGO --- */
+.logo-box {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ff4d6d, var(--primary-color));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(216, 17, 89, 0.45);
+}
+
+.logo-box i {
+    font-size: 1.6rem;
+    color: white;
+}
+
+.sidebar-container {
+    width: var(--sidebar-width);
+    background-color: #ffffff !important;
+    border-right: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    z-index: 1045;
+    flex-shrink: 0;
+    margin: 0 !important; /* Đảm bảo không có margin hở */
+    border-radius: 0 !important; /* Loại bỏ bo góc ở container chính để dính sát viền */
+}
+
+@media (min-width: 992px) {
+    .sidebar-container {
+        position: fixed !important; /* Chuyển sang fixed để dính cứng theo màn hình */
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100vh !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+    
+    /* Đẩy main-content sang phải để không bị sidebar che mất vì sidebar đã dùng fixed */
+    .main-content {
+        margin-left: var(--sidebar-width);
+    }
+}
+
+.sidebar {
+    background-color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-text h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.brand-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.sidebar .nav {
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+    flex: 1;
+    flex-wrap: nowrap !important;
+}
+
+.nav-section-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #8e9aab;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 1.5rem 0 0.5rem 1rem;
+}
+
+.sidebar .nav-link {
+    color: var(--text-muted);
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.3rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link i {
+    font-size: 1.3rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.sidebar .nav-link:hover {
+    color: var(--primary-color);
+    background-color: var(--light-bg);
+    transform: translateX(5px);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background: linear-gradient(135deg, #ff4d6d, var(--primary-color));
+    box-shadow: 0 6px 15px rgba(216, 17, 89, 0.4);
+}
+
+.sidebar .nav-link.active i {
+    color: white !important;
+    filter: drop-shadow(0 2px 5px rgba(255, 255, 255, 0.5));
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: #fffafb;
+}
+
+/* Profile Mini */
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.admin-avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #ff4d6d, var(--primary-color)) !important;
+    color: white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(216, 17, 89, 0.35);
+    border: 2px solid white;
+}
+
+.admin-info h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.admin-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* --- 2. HEADER & LAYOUT --- */
+
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.top-header {
+    height: var(--header-height);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-toggle,
+.header-btn {
+    background: white;
+    border: 2px solid var(--border-color);
+    color: var(--text-main);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-btn {
+    width: auto;
+    padding: 0 1.2rem;
+    border-radius: 20px;
+    font-weight: 700;
+    gap: 0.5rem;
+}
+
+.menu-toggle:hover,
+.header-btn:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.page-title h4 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+.content {
+    padding: 2.5rem;
+    flex: 1;
+}
+
+/* --- 3. CARDS & STATS --- */
+.card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md) !important;
+    color: var(--text-main) !important;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--text-main) !important;
+}
+
+.stats-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.stats-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.stats-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: currentColor;
+    opacity: 0.15;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+.stats-content h3 {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+    margin-bottom: 0 !important;
+}
+
+.stats-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem !important;
+}
+
+/* Custom Stats Colors (Deep Vibe) */
+.stats-danger::before {
+    background-color: var(--primary-color);
+}
+
+.stats-danger .stats-icon {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+.stats-success::before {
+    background-color: #059669;
+}
+
+.stats-success .stats-icon {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.stats-warning::before {
+    background-color: #d97706;
+}
+
+.stats-warning .stats-icon {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.stats-info::before {
+    background-color: #0284c7;
+}
+
+.stats-info .stats-icon {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+/* --- 4. BẢNG (TABLE) --- */
+.table-responsive .table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: var(--text-main) !important;
+}
+
+.table thead th {
+    background-color: var(--light-bg) !important;
+    border-bottom: 2px solid var(--border-color) !important;
+    color: var(--primary-color) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 1.25rem 1.5rem;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--border-color) !important;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody td {
+    background-color: transparent !important;
+    color: var(--text-main) !important;
+    border: none;
+    padding: 1.25rem 1.5rem;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+.table tbody tr:hover td {
+    background-color: var(--light-bg) !important;
+}
+
+/* --- 5. ÉP CÁC CLASS NỀN TỐI CỦA HTML SANG NỀN SÁNG --- */
+.bg-dark,
+.dropdown-menu-dark,
+.table-dark {
+    background-color: #ffffff !important;
+    color: var(--text-main) !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.dropdown-menu-dark .dropdown-item {
+    color: var(--text-main) !important;
+    font-weight: 600;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background-color: var(--light-bg) !important;
+    color: var(--primary-hover) !important;
+}
+
+.dropdown-menu-dark .dropdown-divider {
+    border-color: var(--border-color) !important;
+}
+
+/* Ép chữ trắng thành chữ đen để dễ đọc */
+.text-white,
+.text-light {
+    color: var(--text-main) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.border-secondary {
+    border-color: var(--border-color) !important;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(10%);
+}
+
+/* --- 6. MODAL & FORMS NHẬP LIỆU --- */
+.modal-content {
+    background-color: var(--card-bg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--border-color) !important;
+    background-color: var(--light-bg) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color) !important;
+    background-color: #fffafb !important;
+}
+
+.modal-title {
+    color: var(--primary-hover) !important;
+    font-weight: 800 !important;
+}
+
+.modal-body {
+    color: var(--text-main) !important;
+}
+
+.modal-body span.text-muted,
+.modal-body .text-muted {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+}
+
+.modal-body strong,
+.modal-body .fw-bold:not(.text-danger) {
+    color: var(--text-main) !important;
+}
+
+/* Form Controls */
+.form-control,
+.form-select,
+.input-group-text {
+    background-color: #ffffff !important;
+    border: 2px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+}
+
+.form-control::placeholder {
+    color: #a9b5c7 !important;
+    font-weight: 500;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #fff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(216, 17, 89, 0.2) !important;
+    color: var(--text-main) !important;
+}
+
+.form-label,
+label {
+    color: var(--primary-hover) !important;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- 7. BUTTONS (NÚT BẤM) --- */
+.btn {
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn i {
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+.btn-outline-light {
+    color: var(--primary-color) !important;
+    border: 2px solid var(--primary-color) !important;
+    background: transparent !important;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(216, 17, 89, 0.3) !important;
+}
+
+/* Nút đỏ dùng màu hồng đậm chủ đạo */
+.btn-danger {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover)) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(216, 17, 89, 0.35) !important;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(216, 17, 89, 0.45) !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3) !important;
+}
+
+/* --- 8. HUY HIỆU (BADGES) --- */
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 800;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+}
+
+.badge.bg-danger {
+    background-color: #ffe4e8 !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.badge.bg-success {
+    background-color: #d1fae5 !important;
+    color: #059669 !important;
+    border: 1px solid #a7f3d0 !important;
+}
+
+.badge.bg-warning {
+    background-color: #fef3c7 !important;
+    color: #d97706 !important;
+    border: 1px solid #fde68a !important;
+}
+
+.badge.bg-info {
+    background-color: #e0f2fe !important;
+    color: #0284c7 !important;
+    border: 1px solid #bae6fd !important;
+}
+
+.badge.bg-secondary {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* --- 9. ÉP LẠI SƠ ĐỒ GHẾ (ROOM-SEATS.PHP) --- */
+.cinema-screen {
+    background: linear-gradient(to bottom, rgba(216, 17, 89, 0.4), transparent) !important;
+    border-top: 4px solid var(--primary-color) !important;
+}
+
+.seat-box,
+.cinema-seat {
+    font-weight: 800;
+    border-radius: 10px 10px 5px 5px !important;
+    border: 2px solid transparent !important;
+}
+
+.seat-normal {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+.seat-vip {
+    background-color: #ffe4e8 !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.seat-broken,
+.seat-repair {
+    background-color: #fef3c7 !important;
+    border-color: #d97706 !important;
+    color: #d97706 !important;
+}
+
+.seat-box:hover,
+.cinema-seat:hover {
+    background-color: var(--primary-hover) !important;
+    color: white !important;
+    border-color: var(--primary-hover) !important;
+}
+
+/* Scrollbar mận chín */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+    border: 2px solid var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* --- 10. RESPONSIVE / MOBILE --- */
+@media (max-width: 991.98px) {
+    .sidebar-container {
+        width: 280px;
+        max-width: 80vw;
+    }
+
+    
+
+    .top-header {
+        padding: 0 1rem;
+    }
+
+    .stats-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .stats-icon {
+        margin: 0 auto 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 1.5rem 1rem;
+    }
+
+    .page-title h4 {
+        font-size: 1.1rem;
+    }
+
+    .card-header,
+    .card-body {
+        padding: 1rem;
+    }
+
+    /* Fix Data Tables Overflow & Layout */
+    .table-responsive {
+        border: 0;
+        margin-bottom: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        white-space: nowrap; /* Prevent table cells from wrapping, forces horizontal scroll */
+    }
+
+    .table thead th {
+        padding: 0.8rem 1rem !important;
+        font-size: 0.75rem;
+    }
+
+    .table tbody td {
+        padding: 0.8rem 1rem !important;
+        font-size: 0.85rem;
+    }
+
+    /* Fix Modals to fit smaller screens */
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-content {
+        border-radius: var(--radius-md) !important; 
+    }
+    
+    .modal-header,
+    .modal-footer,
+    .modal-body {
+        padding: 1rem !important;
+    }
+
+    /* Adjust form inputs inside modals for smaller screens */
+    .form-control, 
+    .form-select, 
+    .input-group-text {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    /* Optimize top header buttons */
+    .header-btn {
+        padding: 0;
+        width: 38px;
+        height: 38px;
+        justify-content: center;
+    }
+    
+    .header-btn span:not(.visually-hidden) {
+        display: none; /* Hide text, only show icon on mobile */
+    }
+    
+    .header-btn i {
+        margin-right: 0 !important;
+    }
+}
+
+/* --- 11. BOOTSTRAP OFFCANVAS OVERRIDES (MOBILE FIX) --- */
+@media (max-width: 991.98px) {
+    /* Ghi đè Bootstrap Offcanvas để tránh bị lỗi đẩy layout sang phải */
+    .sidebar-container {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px !important;
+        max-width: 80vw;
+        z-index: 1055 !important;
+        transform: translateX(-100%) !important;
+        visibility: hidden !important;
+        transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .sidebar-container.show {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    .main-content {
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin-left: 0 !important;
+    }
+}
+
